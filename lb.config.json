@@ -1,7 +1,7 @@
 {
   "port": 8089,
   "nodes": [
-      "127.0.0.1:9091",
-      "127.0.0.1:9092"
+      "www.google.com",
+      "www.corley.it"
   ]
 }

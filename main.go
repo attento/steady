@@ -5,14 +5,24 @@ import (
 	"github.com/gianarb/lb/config"
 	"github.com/gorilla/mux"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 )
 
-func run(w http.ResponseWriter, req *http.Request) {
-	fmt.Printf("%s\n", req.URL.Scheme)
+var conf config.Configuration
+
+func createNewRequest(req *http.Request) *http.Request {
 	newRequest := req
-	newRequest.URL.Host = "localhost:8080"
+	server := conf.Nodes[rand.Intn(len(conf.Nodes))]
+	fmt.Printf("%s\n", server)
+	newRequest.URL.Host = server
 	newRequest.URL.Scheme = "http"
+	return newRequest
+}
+
+func run(w http.ResponseWriter, req *http.Request) {
+	newRequest := createNewRequest(req)
+
 	resp, err := http.Get(newRequest.URL.String())
 	if err != nil {
 		fmt.Printf("$s", err)
@@ -22,11 +32,15 @@ func run(w http.ResponseWriter, req *http.Request) {
 	if err != nil {
 		fmt.Printf("$s", err)
 	}
+	for k, v := range resp.Header {
+		for _, single := range v {
+			w.Header().Set(k, single)
+		}
+	}
 	w.Write([]byte(body))
 }
 
 func main() {
-	var conf config.Configuration
 	conf.Parse("./lb.config.json")
 	r := mux.NewRouter()
 	r.HandleFunc("/{[*]}", run)
