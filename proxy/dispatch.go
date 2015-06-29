@@ -1,14 +1,12 @@
 package proxy
 
 import (
-	"math/rand"
 	"net/http"
 )
 
-func CreateNewRequest(req *http.Request, nodes []string) *http.Request {
+func CreateNewRequest(req *http.Request, node string) *http.Request {
 	newRequest := req
-	server := nodes[rand.Intn(len(nodes))]
-	newRequest.URL.Host = server
+	newRequest.URL.Host = node
 	newRequest.URL.Scheme = "http"
 	return newRequest
 }
