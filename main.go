@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/gianarb/lb/config"
-	"github.com/gianarb/lb/proxy"
-	"github.com/gorilla/mux"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/gianarb/lb/config"
+	"github.com/gianarb/lb/proxy"
 )
 
 var conf config.Configuration
@@ -29,7 +29,5 @@ func run(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 	conf.Parse("./lb.config.json")
-	r := mux.NewRouter()
-	r.HandleFunc("/{[*]}", run)
-	http.ListenAndServe(fmt.Sprintf(":%d", conf.Port), r)
+	http.ListenAndServe(fmt.Sprintf(":%d", conf.Port), http.HandlerFunc(run))
 }
