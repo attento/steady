@@ -14,6 +14,7 @@ func CreateNewRequest(req *http.Request, nodes []string) *http.Request {
 }
 
 func HydrateHeaders(resp *http.Response, w http.ResponseWriter) {
+	w.WriteHeader(resp.StatusCode)
 	for k, v := range resp.Header {
 		for _, single := range v {
 			w.Header().Set(k, single)
