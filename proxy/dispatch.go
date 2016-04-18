@@ -3,12 +3,14 @@ package proxy
 import (
 	"math/rand"
 	"net/http"
+
+	"github.com/gianarb/lb/redundancy"
 )
 
-func CreateNewRequest(req *http.Request, nodes []string) *http.Request {
+func CreateNewRequest(req *http.Request, nodes []redundancy.Server) *http.Request {
 	newRequest := req
 	server := nodes[rand.Intn(len(nodes))]
-	newRequest.URL.Host = server
+	newRequest.URL.Host = server.Host
 	newRequest.URL.Scheme = "http"
 	return newRequest
 }
