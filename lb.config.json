@@ -1,7 +1,18 @@
 {
-  "port": 8089,
-  "nodes": [
-      "www.google.com",
-      "www.corley.it"
-  ]
+  "gianarb": {
+    "port": 8089,
+    "bind": "0.0.0.0",
+    "nodes": [
+      {"host": "www.google.com"},
+      {"host": "www.google.com"}
+    ]
+  },
+  "andrea": {
+    "port": 8081,
+    "bind": "0.0.0.0",
+    "nodes": [
+      {"host": "www.twitter.com"},
+      {"host": "www.twitter.com"}
+    ]
+  }
 }

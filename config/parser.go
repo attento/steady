@@ -3,6 +3,8 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
+
+	"github.com/gianarb/lb/redundancy"
 )
 
 func (c *Configuration) Parse(filePath string) error {
@@ -17,8 +19,4 @@ func (c *Configuration) Parse(filePath string) error {
 	return nil
 }
 
-// Configuration configuration struct
-type Configuration struct {
-	Port  int      `json:"port"`
-	Nodes []string `json:"nodes"`
-}
+type Configuration map[string]*redundancy.Frontend
