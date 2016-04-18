@@ -3,6 +3,7 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
+	"log"
 
 	"github.com/gianarb/lb/redundancy"
 )
@@ -14,9 +15,12 @@ func (c *Configuration) Parse(filePath string) error {
 	}
 	err = json.Unmarshal(file, &c)
 	if err != nil {
-		return err
+		log.Fatalln(err)
 	}
 	return nil
 }
 
-type Configuration map[string]*redundancy.Frontend
+type Configuration struct {
+	RConf     RConf                           `json:"rconf"`
+	Frontends map[string]*redundancy.Frontend `json:"frontends"`
+}

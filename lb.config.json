@@ -1,18 +1,25 @@
 {
-  "gianarb": {
-    "port": 8089,
-    "bind": "0.0.0.0",
-    "nodes": [
-      {"host": "www.google.com"},
-      {"host": "www.google.com"}
-    ]
+  "rconf": {
+    "admin": true,
+    "port": 9992,
+    "bind": "0.0.0.0"
   },
-  "andrea": {
-    "port": 8081,
-    "bind": "0.0.0.0",
-    "nodes": [
-      {"host": "www.twitter.com"},
-      {"host": "www.twitter.com"}
-    ]
+  "frontends": {
+    "gianarb": {
+      "port": 8089,
+      "bind": "0.0.0.0",
+      "nodes": [
+        {"host": "www.google.com"},
+        {"host": "www.google.com"}
+      ]
+    },
+    "andrea": {
+      "port": 8081,
+      "bind": "0.0.0.0",
+      "nodes": [
+        {"host": "www.twitter.com"},
+        {"host": "www.twitter.com"}
+      ]
+    }
   }
 }
