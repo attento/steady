@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"sync"
 
+	"github.com/gianarb/lb/api"
 	"github.com/gianarb/lb/config"
 	"github.com/gianarb/lb/proxy"
 	"github.com/gianarb/lb/redundancy"
@@ -36,7 +37,11 @@ func main() {
 	conf.Parse("./lb.config.json")
 	var wg sync.WaitGroup
 
-	for name, frontend := range conf {
+	if conf.RConf.Admin == true {
+		go api.Start(conf.RConf)
+	}
+
+	for name, frontend := range conf.Frontends {
 		wg.Add(1)
 		go func(fr *redundancy.Frontend, n string) {
 			defer wg.Done()
