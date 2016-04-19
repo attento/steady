@@ -21,7 +21,7 @@ have more of one, each contains `port`, `bind` and a list of `nodes`.
         {"host": "www.google.com"},
         {"host": "www.google.com"}
       ]
-    },
+    }
   }
 }
 ```
