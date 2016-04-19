@@ -1,4 +1,4 @@
-package redundancy
+package core
 
 type Server struct {
 	Host string `json:"host"`

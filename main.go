@@ -9,13 +9,13 @@ import (
 
 	"github.com/gianarb/lb/api"
 	"github.com/gianarb/lb/config"
+	"github.com/gianarb/lb/core"
 	"github.com/gianarb/lb/proxy"
-	"github.com/gianarb/lb/redundancy"
 )
 
 var conf config.Configuration
 
-func run(fr *redundancy.Frontend) http.HandlerFunc {
+func run(fr *core.Frontend) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		newRequest := proxy.CreateNewRequest(req, fr.Nodes)
 
@@ -43,7 +43,7 @@ func main() {
 
 	for name, frontend := range conf.Frontends {
 		wg.Add(1)
-		go func(fr *redundancy.Frontend, n string) {
+		go func(fr *core.Frontend, n string) {
 			defer wg.Done()
 			log.Printf("Start %s on %s:%d", n, fr.Bind, fr.Port)
 			err := http.ListenAndServe(fmt.Sprintf("%s:%d", fr.Bind, fr.Port), run(fr))

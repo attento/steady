@@ -4,10 +4,10 @@ import (
 	"math/rand"
 	"net/http"
 
-	"github.com/gianarb/lb/redundancy"
+	"github.com/gianarb/lb/core"
 )
 
-func CreateNewRequest(req *http.Request, nodes []redundancy.Server) *http.Request {
+func CreateNewRequest(req *http.Request, nodes []core.Server) *http.Request {
 	newRequest := req
 	server := nodes[rand.Intn(len(nodes))]
 	newRequest.URL.Host = server.Host

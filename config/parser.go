@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/gianarb/lb/redundancy"
+	"github.com/gianarb/lb/core"
 )
 
 func (c *Configuration) Parse(filePath string) error {
@@ -21,6 +21,6 @@ func (c *Configuration) Parse(filePath string) error {
 }
 
 type Configuration struct {
-	RConf     RConf                           `json:"rconf"`
-	Frontends map[string]*redundancy.Frontend `json:"frontends"`
+	RConf     RConf                     `json:"rconf"`
+	Frontends map[string]*core.Frontend `json:"frontends"`
 }

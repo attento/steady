@@ -1,4 +1,4 @@
-package redundancy
+package core
 
 type Frontend struct {
 	Port  int      `json:"port"`
