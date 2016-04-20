@@ -12,11 +12,12 @@ import (
 type Api struct {
 }
 
-func Start(c config.RConf) {
-	log.Printf("Start api system on %s:%d", c.Bind, c.Port)
+func Start(c config.Configuration) {
+	log.Printf("Start api system on %s:%d", c.RConf.Bind, c.RConf.Port)
 	r := mux.NewRouter()
 	r.HandleFunc("/ping", PingHandler()).Methods("GET")
-	err := http.ListenAndServe(fmt.Sprintf("%s:%d", c.Bind, c.Port), r)
+	r.HandleFunc("/backup", BackupHandler(c)).Methods("GET")
+	err := http.ListenAndServe(fmt.Sprintf("%s:%d", c.RConf.Bind, c.RConf.Port), r)
 	if err != nil {
 		log.Fatalln(err)
 	}

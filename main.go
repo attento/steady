@@ -38,7 +38,7 @@ func main() {
 	var wg sync.WaitGroup
 
 	if conf.RConf.Admin == true {
-		go api.Start(conf.RConf)
+		go api.Start(conf)
 	}
 
 	for name, frontend := range conf.Frontends {
