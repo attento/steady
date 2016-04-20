@@ -28,6 +28,17 @@ have more of one, each contains `port`, `bind` and a list of `nodes`.
 
 Each `node` is describe with an `host`.
 
+## Try for dev
+At the moment we don't serve any facility to compile and install this tool
+because it's work in progress but you can try anyway with this easy flow:
+
+```
+go get github.com/gianarb/lb.git
+cd $GOPATH/src/github/gianarb/lb
+go get ./...
+go run main.go -c ./lb.config.json
+```
+
 ## rconf
 `rconf` configuration node descibes the general configuration for `redundancy`
 you can enable or disable the API system and also configure bind adress and
