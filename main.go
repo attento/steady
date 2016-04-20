@@ -1,10 +1,12 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"sync"
 
 	"github.com/gianarb/lb/api"
@@ -34,7 +36,20 @@ func run(fr *core.Frontend) http.HandlerFunc {
 }
 
 func main() {
-	conf.Parse("./lb.config.json")
+	var configPath string
+
+	cmdFlags := flag.NewFlagSet("event", flag.ContinueOnError)
+	cmdFlags.StringVar(&configPath, "c", "/etc/lb.config.json", "c")
+
+	if err := cmdFlags.Parse(os.Args[1:]); err != nil {
+		log.Fatalln(err)
+	}
+
+	if _, err := os.Stat(configPath); os.IsNotExist(err) {
+		log.Fatalln(err)
+	}
+
+	conf.Parse(configPath)
 	var wg sync.WaitGroup
 
 	if conf.RConf.Admin == true {
