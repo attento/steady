@@ -1,8 +1,9 @@
 {
   "rconf": {
-    "admin": true,
-    "port": 9992,
-    "bind": "0.0.0.0"
+    "admin": {
+      "port": 9992,
+      "bind": "0.0.0.0"
+    }
   },
   "frontends": {
     "gianarb": {

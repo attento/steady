@@ -52,7 +52,7 @@ func main() {
 	conf.Parse(configPath)
 	var wg sync.WaitGroup
 
-	if conf.RConf.Admin == true {
+	if conf.RConf.Admin != nil {
 		go api.Start(conf)
 	}
 

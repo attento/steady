@@ -9,9 +9,10 @@ have more of one, each contains `port`, `bind` and a list of `nodes`.
 ```json
 {
   "rconf": {
-    "admin": true,
-    "port": 9992,
-    "bind": "0.0.0.0"
+    "admin": {
+      "port": 9992,
+      "bind": "0.0.0.0"
+    }
   },
   "frontends": {
     "gianarb": {
@@ -43,6 +44,9 @@ go run main.go -c ./lb.config.json
 `rconf` configuration node descibes the general configuration for `redundancy`
 you can enable or disable the API system and also configure bind adress and
 port for this service.
+
+`admin` field enable or disable the JSON Api to manage `lb` you can change
+`port` and `bind` address.
 
 # Api 
 The api system is the most important port with the external world, the goal is
