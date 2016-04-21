@@ -30,6 +30,7 @@ func GetFrontendHandler(config config.Configuration) func(w http.ResponseWriter,
 				js, _ := json.Marshal(val)
 				w.WriteHeader(200)
 				w.Write(js)
+				return
 			} else {
 				w.WriteHeader(404)
 			}
