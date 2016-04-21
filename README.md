@@ -54,3 +54,5 @@ support everything that you can do with this tool.
 
 * `/ping` is a sanity call to understand if the service is up and running
 * `/backup` returns the lb's configuration in the current status
+* `/frontend` returns the list of frontends
+* `/frontend/{name}` returns single frontends
