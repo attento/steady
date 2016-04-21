@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/gianarb/lb/config"
 )
@@ -22,7 +23,8 @@ func GetFrontendsHandler(config config.Configuration) func(w http.ResponseWriter
 func GetFrontendHandler(config config.Configuration) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		c := "andrea"
+		h := strings.Split(r.URL.Path, "/")
+		c := h[2]
 		for key, val := range config.Frontends {
 			if key == c {
 				js, _ := json.Marshal(val)
