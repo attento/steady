@@ -56,3 +56,6 @@ support everything that you can do with this tool.
 * `/backup` returns the lb's configuration in the current status
 * `/frontend` returns the list of frontends
 * `/frontend/{name}` returns single frontends
+* POST on `/frontend/{name}/node` with `{"host": "127.0.10.1"}` add new node on name 
+
+**Look into `/res`**, there is a Postman collection of request.
