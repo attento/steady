@@ -3,21 +3,21 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 
 	"github.com/gianarb/lb/core"
 )
 
-func (c *Configuration) Parse(filePath string) error {
+func Parse(filePath string) (Configuration, error) {
+	var c Configuration
 	file, err := ioutil.ReadFile(filePath)
 	if err != nil {
-		return err
+		return c, err
 	}
 	err = json.Unmarshal(file, &c)
 	if err != nil {
-		log.Fatalln(err)
+		return c, err
 	}
-	return nil
+	return c, nil
 }
 
 type Configuration struct {
