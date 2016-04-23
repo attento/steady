@@ -17,23 +17,22 @@
 	"public": false,
 	"requests": [
 		{
-			"folder": null,
 			"id": "074abd61-fee8-8ae5-9ede-423a793393d5",
-			"name": "add node",
-			"dataMode": "raw",
-			"data": [],
-			"descriptionFormat": "html",
-			"description": "",
 			"headers": "Content-Type: application/json\n",
-			"method": "POST",
-			"pathVariables": {},
 			"url": "http://localhost:9992/frontend/andrea/node",
 			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
+			"time": 1461434038916,
+			"name": "add node",
+			"description": "",
 			"collectionId": "61a49c42-1315-2e13-144a-0c471cbc3220",
-			"rawModeData": "{\n    \"host\": \"www.google.com\"\n}"
+			"rawModeData": "{\n    \"host\": \"www.google.com\",\n    \"fields\": {\n        \"type\": \"web\"\n    }\n}"
 		},
 		{
 			"folder": null,
