@@ -56,6 +56,8 @@ support everything that you can do with this tool.
 * `/backup` returns the lb's configuration in the current status
 * `/frontend` returns the list of frontends
 * `/frontend/{name}` returns single frontends
+* POST on `/frontend/{name}` add frontend `{"bind": "0.0.0.0", "port": 9129}`
+* DELETE on `/frontend/{name}` delete single frontend
 * POST on `/frontend/{name}/node` with `{"host": "127.0.10.1", "fields": {"type": "web"}}` add new node on name
 * DELETE on `/frontend/{name}/node` with `{"host": "127.0.10.1"}` deletes all nodes for this host
 

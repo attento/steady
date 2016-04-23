@@ -18,6 +18,8 @@ func Start(c config.Configuration) {
 	r.HandleFunc("/ping", PingHandler()).Methods("GET")
 	r.HandleFunc("/backup", BackupHandler(c)).Methods("GET")
 	r.HandleFunc("/frontend", GetFrontendsHandler(c)).Methods("GET")
+	r.HandleFunc("/frontend/{name}", PostFrontendsHandler(c)).Methods("POST")
+	r.HandleFunc("/frontend/{name}", DeleteFrontendsHandler(c)).Methods("DELETE")
 	r.HandleFunc("/frontend/{name}", GetFrontendHandler(c)).Methods("GET")
 	r.HandleFunc("/frontend/{name}/node", PostNodeHandler(c)).Methods("POST")
 	r.HandleFunc("/frontend/{name}/node", DeleteNodeHandler(c)).Methods("DELETE")
