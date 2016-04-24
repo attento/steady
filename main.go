@@ -2,15 +2,12 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
-	"net/http"
 	"os"
 	"sync"
 
 	"github.com/gianarb/lb/api"
 	"github.com/gianarb/lb/config"
-	"github.com/gianarb/lb/core"
 	"github.com/gianarb/lb/proxy"
 )
 
@@ -36,16 +33,10 @@ func main() {
 	}
 
 	var wg sync.WaitGroup
-	for name, frontend := range c.Frontends {
+	for name, v := range c.Frontends {
 		wg.Add(1)
-		go func(fr *core.Frontend, n string) {
-			defer wg.Done()
-			log.Printf("Start %s on %s:%d", n, fr.Bind, fr.Port)
-			err := http.ListenAndServe(fmt.Sprintf("%s:%d", fr.Bind, fr.Port), proxy.ProxyHandler(fr))
-			if err != nil {
-				log.Fatalln(err)
-			}
-		}(frontend, name)
+
+		go proxy.StartFrontend(name, v)
 	}
 	wg.Wait()
 }
