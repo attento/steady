@@ -1,6 +1,9 @@
 deps:
 	go get ./...
 
+tests:
+	go test ./...
+
 build:
 	go build
 
