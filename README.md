@@ -1,6 +1,6 @@
-# Redundancy
+# Steady
 
-Redundancy is a HTTP balancer and reverse proxy, it helps you to configure and
+Steady is a HTTP balancer and reverse proxy, it helps you to configure and
 manage dynamic HTTP application.
 
 This is a typical configuration file when `gianarb.it` is a frontend, you can
@@ -41,7 +41,7 @@ go run main.go -c ./lb.config.json
 ```
 
 ## rconf
-`rconf` configuration node descibes the general configuration for `redundancy`
+`rconf` configuration node descibes the general configuration for `Steady`
 you can enable or disable the API system and also configure bind adress and
 port for this service.
 
@@ -62,3 +62,5 @@ support everything that you can do with this tool.
 * DELETE on `/frontend/{name}/node` with `{"host": "127.0.10.1"}` deletes all nodes for this host
 
 **Look into `/res`**, there is a Postman collection of request.
+
+NB. Thanks [@fntlnz](https://github.com/fntlnz) for the awesome name!
