@@ -7,6 +7,7 @@ import (
 
 	"github.com/gianarb/lb/config"
 	"github.com/gianarb/lb/core"
+	"github.com/gianarb/lb/proxy"
 )
 
 type FrontendResponse struct {
@@ -23,20 +24,25 @@ func DeleteFrontendsHandler(config config.Configuration) func(w http.ResponseWri
 
 func PostFrontendsHandler(config config.Configuration) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
 		var frontend core.Frontend
+
+		h := strings.Split(r.URL.Path, "/")
+		c := h[2]
+
+		w.Header().Set("Content-Type", "application/json")
 		decoder := json.NewDecoder(r.Body)
 		err := decoder.Decode(&frontend)
+		config.Frontends[c] = &frontend
 		if err != nil {
 			w.WriteHeader(406)
 			return
 		}
-		h := strings.Split(r.URL.Path, "/")
-		c := h[2]
-		config.Frontends[c] = &frontend
+
+		go proxy.StartFrontend(c, &frontend)
 		w.WriteHeader(200)
-		js, _ := json.Marshal(config.Frontends[c])
+		js, _ := json.Marshal(frontend)
 		w.Write(js)
+		return
 	}
 }
 
@@ -49,20 +55,18 @@ func GetFrontendsHandler(config config.Configuration) func(w http.ResponseWriter
 	}
 }
 
-func GetFrontendHandler(config config.Configuration) func(w http.ResponseWriter, r *http.Request) {
+func GetFrontendHandler(myConf config.Configuration) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		h := strings.Split(r.URL.Path, "/")
 		c := h[2]
-		for key, val := range config.Frontends {
-			if key == c {
-				js, _ := json.Marshal(val)
-				w.WriteHeader(200)
-				w.Write(js)
-				return
-			} else {
-				w.WriteHeader(404)
-			}
+		fr := myConf.GetFrontendByName(c)
+		if fr == nil {
+			w.WriteHeader(404)
+			return
 		}
+		js, _ := json.Marshal(fr)
+		w.WriteHeader(200)
+		w.Write(js)
 	}
 }
