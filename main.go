@@ -6,9 +6,9 @@ import (
 	"os"
 	"sync"
 
-	"github.com/gianarb/lb/api"
-	"github.com/gianarb/lb/config"
-	"github.com/gianarb/lb/proxy"
+	"github.com/gianarb/steady/api"
+	"github.com/gianarb/steady/config"
+	"github.com/gianarb/steady/proxy"
 )
 
 func main() {

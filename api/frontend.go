@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gianarb/lb/config"
-	"github.com/gianarb/lb/core"
-	"github.com/gianarb/lb/proxy"
+	"github.com/gianarb/steady/config"
+	"github.com/gianarb/steady/core"
+	"github.com/gianarb/steady/proxy"
 )
 
 type FrontendResponse struct {

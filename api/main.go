@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gianarb/lb/config"
+	"github.com/gianarb/steady/config"
 	"github.com/gorilla/mux"
 )
 
