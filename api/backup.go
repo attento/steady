@@ -9,8 +9,12 @@ import (
 
 func BackupHandler(conf config.Configuration) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		js, _ := json.Marshal(conf)
+		js, err := json.Marshal(conf)
 		w.Header().Set("Content-Type", "application/json")
+		if err != nil {
+			w.WriteHeader(500)
+			return
+		}
 		w.WriteHeader(200)
 		w.Write(js)
 	}
