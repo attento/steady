@@ -1,4 +1,5 @@
 # Steady
+[![Build Status](https://travis-ci.org/gianarb/steady.svg?branch=master)](https://travis-ci.org/gianarb/steady)
 
 Steady is a HTTP balancer and reverse proxy, it helps you to configure and
 manage dynamic HTTP application.
