@@ -6,3 +6,4 @@ go:
 script:
   - make deps
   - make tests
+  - go vet ./...
