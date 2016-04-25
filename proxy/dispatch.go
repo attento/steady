@@ -32,12 +32,12 @@ func ProxyHandler(fr *core.Frontend) http.HandlerFunc {
 
 		resp, err := http.Get(newRequest.URL.String())
 		if err != nil {
-			fmt.Printf("$s", err)
+			fmt.Printf("%s", err)
 		}
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			fmt.Printf("$s", err)
+			fmt.Printf("%s", err)
 		}
 		hydrateHeaders(resp, w)
 		w.Write([]byte(body))
