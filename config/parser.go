@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	"github.com/gianarb/lb/core"
+	"github.com/gianarb/steady/core"
 )
 
 func Parse(filePath string) (Configuration, error) {

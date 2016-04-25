@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"net/http"
 
-	"github.com/gianarb/lb/core"
+	"github.com/gianarb/steady/core"
 )
 
 type LbProxy struct {

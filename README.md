@@ -34,7 +34,7 @@ At the moment we don't serve any facility to compile and install this tool
 because it's work in progress but you can try anyway with this easy flow:
 
 ```
-go get github.com/gianarb/lb.git
+go get github.com/gianarb/steady.git
 cd $GOPATH/src/github/gianarb/lb
 go get ./...
 go run main.go -c ./lb.config.json

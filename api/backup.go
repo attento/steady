@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/gianarb/lb/config"
+	"github.com/gianarb/steady/config"
 )
 
 func BackupHandler(conf config.Configuration) func(w http.ResponseWriter, r *http.Request) {

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/gianarb/lb/config"
-	"github.com/gianarb/lb/core"
+	"github.com/gianarb/steady/config"
+	"github.com/gianarb/steady/core"
 )
 
 func PostNodeHandler(config config.Configuration) func(w http.ResponseWriter, r *http.Request) {

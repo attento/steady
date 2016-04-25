@@ -6,7 +6,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/gianarb/lb/core"
+	"github.com/gianarb/steady/core"
 )
 
 func StartFrontend(name string, frontend *core.Frontend) error {
