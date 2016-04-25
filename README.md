@@ -35,7 +35,7 @@ because it's work in progress but you can try anyway with this easy flow:
 
 ```
 go get github.com/gianarb/steady.git
-cd $GOPATH/src/github/gianarb/lb
+cd $GOPATH/src/github/gianarb/steady
 go get ./...
 go run main.go -c ./lb.config.json
 ```

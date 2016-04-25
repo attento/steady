@@ -9,9 +9,6 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type Api struct {
-}
-
 func Start(c config.Configuration) {
 	log.Printf("Start api system on %s:%d", c.RConf.Admin.Bind, c.RConf.Admin.Port)
 	r := mux.NewRouter()

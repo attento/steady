@@ -9,9 +9,6 @@ import (
 	"github.com/gianarb/steady/core"
 )
 
-type LbProxy struct {
-}
-
 func createNewRequest(req *http.Request, nodes []core.Server) *http.Request {
 	newRequest := req
 	server := nodes[rand.Intn(len(nodes))]
