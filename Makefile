@@ -1,8 +1,5 @@
 .PHONY: deps tests build clean compile
 
-deps:
-	go get ./...
-
 tests:
 	go test ./...
 
