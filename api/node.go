@@ -26,7 +26,7 @@ func PostNodeHandler(config config.Configuration) func(w http.ResponseWriter, r 
 			w.WriteHeader(404)
 			return
 		}
-		fr.Nodes = append(fr.Nodes, server)
+		fr.AddNode(server)
 		js, _ := json.Marshal(fr)
 		w.Write(js)
 		return
@@ -50,11 +50,7 @@ func DeleteNodeHandler(config config.Configuration) func(w http.ResponseWriter, 
 			w.WriteHeader(404)
 			return
 		}
-		for k, nn := range fr.Nodes {
-			if nn.Host == server.Host {
-				fr.Nodes = append(fr.Nodes[:k], fr.Nodes[k+1:]...)
-			}
-		}
+		fr.DeleteNodeByHost(server.Host)
 		js, _ := json.Marshal(fr)
 		w.Write(js)
 		return
