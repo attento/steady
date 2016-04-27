@@ -17,19 +17,3 @@ func TestParseWrongPath(t *testing.T) {
 		t.Fail()
 	}
 }
-
-func TestGetFrontendByName(t *testing.T) {
-	c, _ := Parse("../lb.config.json")
-	dd := c.GetFrontendByName("andrea")
-	if dd == nil {
-		t.Fail()
-	}
-}
-
-func TestGetUnexistedFrontendByName(t *testing.T) {
-	c, _ := Parse("../lb.config.json")
-	dd := c.GetFrontendByName("notexist")
-	if dd != nil {
-		t.Fail()
-	}
-}
